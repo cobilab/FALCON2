@@ -1,0 +1,65 @@
+#============================================================================#
+#                   FALCON, IEETA/DETI, UNIVERSITY OF AVEIRO                 #
+#============================================================================#
+BIN    = .
+CC     = gcc
+CPLP   = -fstrict-aliasing -ffast-math -msse2
+#-----------------------------------------------------------------------------
+CFLAGS = -O3 -Wall $(CPLP) -DPROGRESS 
+#-----------------------------------------------------------------------------
+LIBS   = -lm -lpthread
+DEPS   = defs.h param.h
+PROGS  = $(BIN)/FALCON $(BIN)/FALCON-filter $(BIN)/FALCON-visual \
+	 $(BIN)/FALCON-inter $(BIN)/FALCON-inter-visual
+OBJS   = mem.o time.o msg.o parser.o common.o buffer.o levels.o models.o \
+         pmodels.o kmodels.o top.o stream.o filters.o paint.o labels.o
+#-----------------------------------------------------------------------------
+all:
+	$(MAKE) progs
+progs: $(PROGS)
+$(BIN)/FALCON: falcon.c $(DEPS) $(OBJS)
+	$(CC) $(CFLAGS) -o $(BIN)/FALCON falcon.c $(OBJS) $(LIBS)
+$(BIN)/FALCON-filter: falcon-filter.c $(DEPS) $(OBJS)
+	$(CC) $(CFLAGS) -o $(BIN)/FALCON-filter falcon-filter.c $(OBJS) $(LIBS)
+$(BIN)/FALCON-visual: falcon-visual.c $(DEPS) $(OBJS)
+	$(CC) $(CFLAGS) -o $(BIN)/FALCON-visual falcon-visual.c $(OBJS) $(LIBS)
+$(BIN)/FALCON-inter: falcon-inter.c $(DEPS) $(OBJS)
+	$(CC) $(CFLAGS) -o $(BIN)/FALCON-inter falcon-inter.c $(OBJS) $(LIBS)
+$(BIN)/FALCON-inter-visual: falcon-inter-visual.c $(DEPS) $(OBJS)
+	$(CC) $(CFLAGS) -o $(BIN)/FALCON-inter-visual falcon-inter-visual.c $(OBJS) $(LIBS)
+mem.o: mem.c mem.h $(DEPS)
+	$(CC) -c $(CFLAGS) mem.c
+time.o: time.c time.h $(DEPS)
+	$(CC) -c $(CFLAGS) time.c
+msg.o: msg.c msg.h $(DEPS)
+	$(CC) -c $(CFLAGS) msg.c
+parser.o: parser.c parser.h $(DEPS)
+	$(CC) -c $(CFLAGS) parser.c
+common.o: common.c common.h $(DEPS)
+	$(CC) -c $(CFLAGS) common.c
+buffer.o: buffer.c buffer.h $(DEPS)
+	$(CC) -c $(CFLAGS) buffer.c
+levels.o: levels.c levels.h $(DEPS)
+	$(CC) -c $(CFLAGS) levels.c
+models.o: models.c models.h $(DEPS)
+	$(CC) -c $(CFLAGS) models.c
+pmodels.o: pmodels.c pmodels.h $(DEPS)
+	$(CC) -c $(CFLAGS) pmodels.c
+kmodels.o: kmodels.c kmodels.h $(DEPS)
+	$(CC) -c $(CFLAGS) kmodels.c
+stream.o: stream.c stream.h $(DEPS)
+	$(CC) -c $(CFLAGS) stream.c
+top.o: top.c top.h $(DEPS)
+	$(CC) -c $(CFLAGS) top.c
+labels.o: labels.c labels.h $(DEPS)
+	$(CC) -c $(CFLAGS) labels.c
+filters.o: filters.c filters.h $(DEPS)
+	$(CC) -c $(CFLAGS) filters.c
+paint.o: paint.c paint.h $(DEPS)
+	$(CC) -c $(CFLAGS) paint.c
+#-----------------------------------------------------------------------------
+clean:
+	/bin/rm -f *.o
+cleanall:
+	/bin/rm -f *.o $(PROGS)
+#-----------------------------------------------------------------------------

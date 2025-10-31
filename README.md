@@ -14,7 +14,7 @@ The core of the method is based on <b>relative data compression</b>. FALCON2 use
 The tool is also able to <b>identify locally where, in each reference sequence, the similarity occurs</b>. FALCON2 provides subcommands to <b>filter the local results (filter)</b>, <b>visualize the results (fvisual)</b>, perform <b>database inter-similarity analysis (inter)</b>, and <b>visualize inter-similarities (ivisual)</b>.
 </p>
 
-<p align="justify">Find additional information <a href="https://www.biorxiv.org/content/biorxiv/suppl/2018/02/27/267179.DC1/267179-1.pdf">here</a>.</p>
+[//]: # <p align="justify">Find additional information <a href="https://www.biorxiv.org/content/biorxiv/suppl/2018/02/27/267179.DC1/267179-1.pdf">here</a>.</p>
 
 <br>
 

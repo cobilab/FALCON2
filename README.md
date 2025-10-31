@@ -14,8 +14,6 @@ The core of the method is based on <b>relative data compression</b>. FALCON2 use
 The tool is also able to <b>identify locally where, in each reference sequence, the similarity occurs</b>. FALCON2 provides subcommands to <b>filter the local results (filter)</b>, <b>visualize the results (fvisual)</b>, perform <b>database inter-similarity analysis (inter)</b>, and <b>visualize inter-similarities (ivisual)</b>.
 </p>
 
-[//]: # <p align="justify">Find additional information <a href="https://www.biorxiv.org/content/biorxiv/suppl/2018/02/27/267179.DC1/267179-1.pdf">here</a>.</p>
-
 <br>
 
 [![Install and Demo Video](imgs/demo.png)](https://www.youtube.com/watch?v=eLqXE2ghFNk)
@@ -24,17 +22,11 @@ The tool is also able to <b>identify locally where, in each reference sequence, 
 
 ## 1. Installation ##
 
-### 1.1 Automatic installation with [Conda](https://conda.io/miniconda) ###
+### 1.1 Manual installation ###
 
 ```bash
-conda install -c cobilab falcon2 --yes
-```
-
-### 1.2 Manual installation ###
-
-```bash
-git clone https://github.com/cobilab/falcon.git
-cd falcon/src/
+git clone https://github.com/cobilab/FALCON2.git
+cd FALCON2/src/
 cmake .
 make
 cp FALCON2 ../../
@@ -47,9 +39,7 @@ cd ../../
 Search for the top 15 similar viruses in sample reads that we provide in folder test:
 ```bash
 cd test
-gunzip reads.fq.gz
-gunzip VDB.fa.gz
-./FALCON2 meta -v -F -t 15 -l 47 -x top.txt reads.fq VDB.fa
+./FALCON2 meta -v -F -t 15 -l 47 -x top.txt reads.fq.gz VDB.fa.gz
 ```
 It will identify Zaire Ebolavirus in the samples (top.txt) according to the following image
 
@@ -62,15 +52,7 @@ alt="Top" width="604" border="0" /></p>
 
 An example of building a reference database from NCBI:
 ```bash
-wget ftp://ftp.ncbi.nlm.nih.gov/genomes/genbank/viral/assembly_summary.txt
-awk -F '\t' '{if($12=="Complete Genome") print $20}' assembly_summary.txt > ASCG.txt
-mkdir -p GB_DB_VIRAL
-mkdir -p GB_DB_VIRAL_CDS
-mkdir -p GB_DB_VIRAL_RNA
-cat ASCG.txt | xargs -I{} -n1 -P8 wget -P GB_DB_VIRAL {}/*_genomic.fna.gz
-mv GB_DB_VIRAL/*_cds_from_genomic.fna.gz GB_DB_VIRAL_CDS/
-mv GB_DB_VIRAL/*_rna_from_genomic.fna.gz GB_DB_VIRAL_RNA/
-zcat GB_DB_VIRAL/*.fna.gz > VDB.fa
+
 ```
 
 For building reference databases for multiple domains/kingdoms (bacterial, fungi, protozoa, plant, etc), use:
@@ -81,7 +63,7 @@ https://raw.githubusercontent.com/cobilab/gto/master/scripts/gto_build_dbs.sh
 ### 3.2 Download an existing database ###
 
 <p align="justify">
-An already reference viral database is available <a href="http://sweet.ua.pt/pratas/datasets/VDB.fa.gz">here</a>. With this example, you only need to uncompress it, namely through: gunzip VDB.fa.gz, and use it in FALCON2 along with the FASTQ reads.
+An already reference viral database is available <a href="http://sweet.ua.pt/pratas/datasets/VDB.fa.gz">here</a>. With this example, you don't need to decompress; use it directly in FALCON2 along with the FASTQ reads.
 </p>
 
 ## 4. Usage ##
@@ -335,8 +317,6 @@ Mandatory arguments:
 ./FALCON2 ivisual -F -l labels.txt -o heatmap.svg matrix.txt
 ```
 
-<p align="justify">Find additional information <a href="https://www.biorxiv.org/content/biorxiv/suppl/2018/02/27/267179.DC1/267179-1.pdf">here</a>.</p>
-
 ## 5. Common use ##
 
 Create the following bash script:
@@ -358,8 +338,7 @@ Then, run FALCON2:
 ./FALCON2-meta.sh reads1.fastq:reads2.fastq VDB.fa
 ```
 
-reads1.fastq, reads2.fastq and VDB.fa is only an example.
-For more examples, see the examples folder.
+reads1.fastq, reads2.fastq, and VDB.fa are only examples.
 
 ## 6. New Features in FALCON2 ##
 
@@ -399,36 +378,11 @@ Options:
 - `-mi, --magnet-invert`: Invert filter
 - `-mp <val>`: Portion of acceptance (default: 1)
 
-## 7. Citation ##
+## 7. Issues ##
 
-On using this software/method please cite:
+For any issue let us know at [issues link](https://github.com/cobilab/FALCON2/issues).
 
-```
-D. Pratas, M. Hosseini, G. Grilo, A. J. Pinho, R. M. Silva, T. Caetano, J. Carneiro, F. Pereira. (2018).
-Metagenomic Composition Analysis of an Ancient Sequenced Polar Bear Jawbone from Svalbard. 
-Genes, 9(9), 445.
-```
-
-Bibtex:
-<sup>
-```
-@article{Pratas-2018a,
-  title={Metagenomic Composition Analysis of an Ancient Sequenced Polar Bear Jawbone from Svalbard},
-  author={D. Pratas, M. Hosseini, G. Grilo, A. J. Pinho, R. M. Silva, T. Caetano, J. Carneiro, F. Pereira},
-  journal={Genes},
-  volume={9},
-  number={9},
-  pages={445},
-  year={2018}
-}
-```
-</sup>
-
-## 8. Issues ##
-
-For any issue let us know at [issues link](https://github.com/cobilab/falcon/issues).
-
-## 9. License ##
+## 8. License ##
 
 GPL v3.
 

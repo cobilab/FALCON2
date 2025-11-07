@@ -51,7 +51,14 @@ alt="Top" width="604" border="0" /></p>
 
 An example of building a reference database from NCBI:
 ```bash
+# Download reference genomes from NCBI (append <organism> as an argument; defaults to "viruses" if none is provided)
+https://raw.githubusercontent.com/cobilab/FALCON2/main/utils/download_references_ncbi.sh
 
+# Use process_gz_files.sh for compressed files (It will concatenate all .gz files)
+https://raw.githubusercontent.com/cobilab/FALCON2/main/utils/process_gz_files.sh
+
+# Alternative: Manual concatenation from decompressed files
+cat /path/to/reference_fastas/*.fna > input-sequences.fna
 ```
 
 For building reference databases for multiple domains/kingdoms (bacterial, fungi, protozoa, plant, etc), use:

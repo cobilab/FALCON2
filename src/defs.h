@@ -34,8 +34,8 @@ typedef int8_t   I8;
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-#define RELEASE                2
-#define VERSION                3
+#define RELEASE                1
+#define VERSION                0
 #define MAGNET_RELEASE         2
 #define MAGNET_VERSION         23
 

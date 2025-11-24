@@ -1050,6 +1050,46 @@ uint32_t ReadFNames(Parameters *P, char *arg, int x)
   {
   uint32_t nFiles = 1, k = 0, argLen;
 
+  // Check if NULL or empty
+  if (!arg || strlen(arg) == 0) {
+    fprintf(stderr, "Error: No file path provided!\n");
+    exit(1);
+  }
+
+  // Check if it's a flag (starts with '-')
+  if (arg[0] == '-') {
+    fprintf(stderr, "Error: Expected file path but got flag '%s'\n", arg);
+    fprintf(stderr, "This usually means you're missing a file argument.\n");
+    exit(1);
+  }
+
+  // Check if it's a pure number (likely a flag value like "-l 47")
+  int isNumber = 1;
+  for (size_t i = 0; i < strlen(arg); i++) {
+    if (!isdigit(arg[i]) && arg[i] != '.') {
+      isNumber = 0;
+      break;
+    }
+  }
+
+  if (isNumber) {
+    fprintf(stderr, "Error: Expected file path but got number '%s'\n", arg);
+    fprintf(stderr, "This is likely a value for a previous flag (like -l, -t, -c).\n");
+    fprintf(stderr, "\nUsage examples:\n");
+    fprintf(stderr, "  Training:     FALCON2 meta -T -M model.fcm -l 47 reads.fq\n");
+    fprintf(stderr, "  Loading:      FALCON2 meta -L -M model.fcm -l 47 database.fa\n");
+    fprintf(stderr, "  Normal:       FALCON2 meta -l 47 reads.fq database.fa\n");
+    exit(1);
+  }
+
+  // Check for common file extensions (warning only)
+  const char *dot = strrchr(arg, '.');
+  if (!dot || dot == arg) {
+    fprintf(stderr, "Warning: '%s' has no file extension\n", arg);
+    fprintf(stderr, "Expected extensions: .fa, .fasta, .fq, .fastq\n");
+    // Don't exit - might be intentional
+  }
+
   argLen = strlen(arg);
   for( ; k != argLen ; ++k)
     if(arg[k] == ':')

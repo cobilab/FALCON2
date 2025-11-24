@@ -1198,6 +1198,7 @@ void CompressAction(Threads *T, char *refName, char *baseName) {
       fprintf(stderr, "Done!\n");
     }
 #endif
+  }
 
     fprintf(stderr, "  [+] Compressing database ......... %u file(s):\n", P->nDatabases);
 
@@ -1221,7 +1222,6 @@ void CompressAction(Threads *T, char *refName, char *baseName) {
         fprintf(stderr, "Warning: Could not remove temporary file %s\n", filteredFile);
       }
     }
-  }
 }
 
 void CompressActionTraining(Threads *T, char *refName){
@@ -1745,9 +1745,14 @@ int32_t P_Falcon(char **argv, int argc){
 
   P->base = argv[argc-1];
   P->nDatabases = ReadDBFNames (P, argv[argc-1], 0);
-  P->nFiles     = ReadFNames (P, argv[argc-2], 0);
-  fprintf(stderr, "\n");
-  if(P->verbose) PrintArgs(P, T[0], argv[argc-2], argv[argc-1], topSize);
+  if(P->loadModel) {
+    fprintf(stderr, "\n");
+    if(P->verbose) PrintArgs(P, T[0], NULL, argv[argc-1], topSize);
+  }else {
+    P->nFiles     = ReadFNames (P, argv[argc-2], 0);
+    fprintf(stderr, "\n");
+    if(P->verbose) PrintArgs(P, T[0], argv[argc-2], argv[argc-1], topSize);
+  }
 
   fprintf(stderr, "==[ PROCESSING ]====================\n");
   Time = CreateClock(clock());

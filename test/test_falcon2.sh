@@ -197,25 +197,25 @@ fi
 # Section 2: Model Operations
 # =========================
 echo "[2] Model Save/Load/Info"
-run_test "save model (-S -M)"          0 -T -S -M "$MODEL_OUT" "$SMALL_FQ"
-run_test "save model different path"   0 -T -S -M "$MODEL_OUT2" "$MEDIUM_FQ"
+run_test "save model (-S -M)"          0 -S -M "$MODEL_OUT" "$SMALL_FQ" "$SMALL_FA"
+run_test "save model different path"   0 -S -M "$MODEL_OUT2" "$MEDIUM_FQ" "$MEDIUM_FA"
 
 # Verify model was created
 if [[ -f "$MODEL_OUT" ]]; then
     echo "  Model created: $MODEL_OUT ($(stat -f%z "$MODEL_OUT" 2>/dev/null || stat -c%s "$MODEL_OUT" 2>/dev/null || echo '?') bytes)"
-    run_test "load saved model"        0 -T -L -M "$MODEL_OUT" "$SMALL_FQ"
-    run_test "model info (-I)"         0 -T -I -L -M "$MODEL_OUT" "$SMALL_FQ"
+    run_test "load saved model"        0 -L -M "$MODEL_OUT" "$SMALL_FA"
+    run_test "model info (-I)"         0 -I -L -M "$MODEL_OUT" "$SMALL_FA"
 fi
 
 # Load real model if available
 if [[ -f "$REAL_MODEL" ]]; then
-    run_test "load real model"         0 -T -L -M "$REAL_MODEL" "$SMALL_FQ"
-    run_test "real model info"         0 -T -I -L -M "$REAL_MODEL" "$SMALL_FQ"
+    run_test "load real model"         0 -L -M "$REAL_MODEL" "$REAL_DB1"
+    run_test "real model info"         0 -I -L -M "$REAL_MODEL" "$REAL_DB1"
 fi
 
-run_test "load without -M flag"        0 -T -L "$SMALL_FQ"
-run_test "load missing model"          1 -T -L -M "$MISSING_MODEL" "$SMALL_FQ"
-run_test "save without -M path"        0 -T -S "$SMALL_FQ"
+run_test "load without -M flag"        0 -L "$SMALL_FA"
+run_test "load missing model"          1 -L -M "$MISSING_MODEL" "$SMALL_FA"
+run_test "save without -M path"        0 -S "$SMALL_FQ" "$SMALL_FA"
 echo ""
 
 # =========================

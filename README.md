@@ -354,10 +354,10 @@ FALCON2 introduces the ability to save and load trained models for faster subseq
 
 ```bash
 # Train and save a model
-./FALCON2 meta -v -l 47 -S -M mymodel.bin -T reads.fq
+./FALCON2 meta -v -l 47 -S -M mymodel.fcm -T reads.fq
 
 # Load a previously trained model
-./FALCON2 meta -v -l 47 -L -M mymodel.bin reads.fq VDB.fa
+./FALCON2 meta -v -l 47 -L -M mymodel.fcm reads.fq VDB.fa
 ```
 
 Options:

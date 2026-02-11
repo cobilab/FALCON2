@@ -67,6 +67,8 @@ typedef struct{
   U8       magnetVerbose;    // Verbose mode for MAGNET filtering
   U8       magnetInvert;     // Invert MAGNET filtering (complement)
   U32      magnetPortion;    // Portion of acceptance for MAGNET
+  // ===============
+  U8       ignoreHeaders;    // Ignore Headers, doesn't change symbols from " " to "_" in headers
   }
 Parameters;
 

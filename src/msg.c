@@ -114,6 +114,7 @@ void PrintMenuFalcon(void){
   "      -v, --verbose                verbose mode (more information),      \n"
   "      -Z, --local                  database local similarity,            \n"
   "      -s, --show                   show compression levels,              \n"
+  "     -ih, --ignore-hss             ignore header changes (use with caution), \n"
   "                                                                         \n"
   "      -l, --level <level>          compression level [%u;%u],            \n"
   "      -p, --sample <rate>          subsampling (default: %u),            \n"

@@ -374,7 +374,11 @@ void SamplingCompressTarget(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                else{
+                  if(P->ignoreHeaders == 0){
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
+                }
                 }
               conName[r++] = sym;
               }
@@ -477,7 +481,11 @@ void FalconCompressTarget(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                else{
+                  if(P->ignoreHeaders == 0){
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
+                }
                 }
               conName[r++] = sym;
               }
@@ -588,7 +596,11 @@ void CompressTargetWKM(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                else{
+                  if(P->ignoreHeaders == 0){
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
+                }
                 }
               conName[r++] = sym;
               }
@@ -727,7 +739,11 @@ void CompressTarget(Threads T, char *dbFile){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                else{
+                  if(P->ignoreHeaders == 0){
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
+                  }
                 }
               conName[r++] = sym;
               }
@@ -1539,6 +1555,9 @@ int32_t P_Falcon(char **argv, int argc){
   topSize     = ArgsNum    (DEF_TOP,         p, argc, "-t", MIN_TOP, MAX_TOP);
   P->nThreads = ArgsNum    (DEFAULT_THREADS, p, argc, "-n", MIN_THREADS,
   MAX_THREADS);
+
+  // Ignore Header Changes Flag
+  P->ignoreHeaders    = ArgsState  (0,   p, argc, "-ih", "--ignore-hss");
   
   // Magnet Integration Flags
   P->useMagnet       = ArgsState  (0, p, argc, "-mg", "--magnet");

@@ -37,8 +37,9 @@ cd ../
 
 Search for the top 15 similar viruses in sample reads that we provide in folder test:
 ```bash
+cp FALCON2 test/
 cd test
-./FALCON2 meta -v -F -t 15 -l 47 -x top.txt test/reads.fq.gz test/VDB.fa.gz
+./FALCON2 meta -v -F -t 15 -l 47 -x top.txt reads.fq.gz VDB.fa.gz
 ```
 It will identify Zaire Ebolavirus in the samples (top.txt) according to the following image
 

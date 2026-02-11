@@ -847,6 +847,8 @@ void PrintArgs(Parameters *P, Threads T, char *ref, char *tar, uint32_t top){
   #endif
   fprintf(stderr, "Compression level .................. %u\n", P->level);
   fprintf(stderr, "Sub-sampling ....................... %u\n", P->sample);
+  fprintf(stderr, "Ignore header changes .............. %s\n", P->ignoreHeaders == 0 ?
+"no" : "yes");
   fprintf(stderr, "Number of threads .................. %u\n", P->nThreads);
   fprintf(stderr, "Top size ........................... %u\n", top);
   for(n = 0 ; n < P->nModels ; ++n){
@@ -941,6 +943,8 @@ void PrintArgsTrain(Parameters *P, Threads T, char *ref){
   #endif
   fprintf(stderr, "Compression level .................. %u\n", P->level);
   fprintf(stderr, "Sub-sampling ....................... %u\n", P->sample);
+  fprintf(stderr, "Ignore header changes .............. %s\n", P->ignoreHeaders == 0 ?
+"no" : "yes");
   fprintf(stderr, "Number of threads .................. %u\n", P->nThreads);
   for(n = 0 ; n < P->nModels ; ++n){
     fprintf(stderr, "Reference model %u:\n", n+1);

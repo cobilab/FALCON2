@@ -374,11 +374,7 @@ void SamplingCompressTarget(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else{
-                  if(P->ignoreHeaders == 0){
-                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                  }
-                }
+                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
                 }
               conName[r++] = sym;
               }
@@ -481,11 +477,7 @@ void FalconCompressTarget(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else{
-                  if(P->ignoreHeaders == 0){
-                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                  }
-                }
+                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
                 }
               conName[r++] = sym;
               }
@@ -596,11 +588,7 @@ void CompressTargetWKM(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else{
-                  if(P->ignoreHeaders == 0){
-                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                  }
-                }
+                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
                 }
               conName[r++] = sym;
               }
@@ -739,11 +727,7 @@ void CompressTarget(Threads T, char *dbFile){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else{
-                  if(P->ignoreHeaders == 0){
-                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                  }
-                  }
+                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
                 }
               conName[r++] = sym;
               }
@@ -892,8 +876,14 @@ void CompressTargetInter(Threads T){
         cModelTotalWeight += cModelWeight[n];
         }
 
-      for(n = 0 ; n < totModels ; ++n)
-        cModelWeight[n] /= cModelTotalWeight; // RENORMALIZE THE WEIGHTS
+      if(cModelTotalWeight > 0){
+        for(n = 0 ; n < totModels ; ++n)
+          cModelWeight[n] /= cModelTotalWeight; // RENORMALIZE THE WEIGHTS
+        }
+      else{
+        for(n = 0 ; n < totModels ; ++n)
+          cModelWeight[n] = 1.0 / totModels;
+	}
 
       n = 0;
       for(cModel = 0 ; cModel < P->nModels ; ++cModel){
@@ -1042,7 +1032,7 @@ void LoadReferenceInter(Threads T){
   Free(readBuf);
   RemoveParser(PA);
   fclose(Reader);
-}
+  }
 
 //////////////////////////////////////////////////////////////////////////////
 // - - - - - - - - R E F E R E N C E   W I T H   K M O D E L S - - - - - - - -
@@ -1090,7 +1080,7 @@ void LoadReferenceWKM(char *refName){
 //////////////////////////////////////////////////////////////////////////////
 // - - - - - - - - - - - C O M P R E S S O R   M A I N - - - - - - - - - - - -
 
-void CompressAction(Threads *T, char *refName, char *baseName) {
+void CompressAction(Threads *T) {
   pthread_t t[P->nThreads];
   uint32_t n, dbIdx;
   char     filteredFile[MAX_NAME]; // Enough space for filename
@@ -1225,9 +1215,9 @@ void CompressAction(Threads *T, char *refName, char *baseName) {
       P->currentDBIdx = dbIdx;
 
       for(n = 0 ; n < P->nThreads ; ++n)
-        pthread_create(&(t[n+1]), NULL, CompressThread, (void *) &(T[n]));
+        pthread_create(&t[n], NULL, CompressThread, (void *) &T[n]);
       for(n = 0 ; n < P->nThreads ; ++n) // DO NOT JOIN FORS!
-        pthread_join(t[n+1], NULL);
+        pthread_join(t[n], NULL);
       fprintf(stderr, "Done!\n");
 
     }
@@ -1555,9 +1545,6 @@ int32_t P_Falcon(char **argv, int argc){
   topSize     = ArgsNum    (DEF_TOP,         p, argc, "-t", MIN_TOP, MAX_TOP);
   P->nThreads = ArgsNum    (DEFAULT_THREADS, p, argc, "-n", MIN_THREADS,
   MAX_THREADS);
-
-  // Ignore Header Changes Flag
-  P->ignoreHeaders    = ArgsState  (0,   p, argc, "-ih", "--ignore-hss");
   
   // Magnet Integration Flags
   P->useMagnet       = ArgsState  (0, p, argc, "-mg", "--magnet");
@@ -1722,6 +1709,7 @@ int32_t P_Falcon(char **argv, int argc){
     for(ref = 0 ; ref < P->nThreads ; ++ref){
       Free(T[ref].model);
     }
+
     Free(T);
     Free(P);
 
@@ -1775,7 +1763,7 @@ int32_t P_Falcon(char **argv, int argc){
 
   fprintf(stderr, "==[ PROCESSING ]====================\n");
   Time = CreateClock(clock());
-  CompressAction(T, argv[argc-2], P->base);
+  CompressAction(T);
 
   k = 0;
   P->top = CreateTop(topSize * P->nThreads);
@@ -2489,7 +2477,7 @@ int32_t P_Inter(char **argv, int argc){
   fprintf(stderr, "==[ STATISTICS ]====================\n");
   StopCalcAll(Time, clock());
   fprintf(stderr, "\n");
-
+  
   // STOP &
   RemoveClock(Time);
   for(ref = 0 ; ref < P->nFiles ; ++ref)

@@ -7,8 +7,7 @@
   <br>
 </div>
 
-<p align="center"><img src="imgs/logoTrans.png"
-alt="FALCON2" width="204" height="204" border="0" /></p>
+<p align="center"><img src="imgs/logoTrans.png" alt="FALCON2" width="204" height="204" border="0" /></p>
 
 <p align="justify">
 <b>FALCON2 is an ultra-fast method to infer metagenomic composition of sequenced reads</b>. FALCON2 measures <b>similarity between any FASTQ</b> file (or FASTA), independently from the size, <b>against any multi-FASTA database</b>, such as the entire set of complete genomes from the NCBI. FALCON2 supports single reads, paired-end reads, and compositions of both. It has been tested in many platforms, such as Illumina MySeq, HiSeq, Novaseq, IonTorrent.</p>

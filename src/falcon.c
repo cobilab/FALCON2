@@ -374,7 +374,10 @@ void SamplingCompressTarget(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
+		else{
+                  if(P->ignoreHeaders == 0)
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
                 }
               conName[r++] = sym;
               }
@@ -477,8 +480,11 @@ void FalconCompressTarget(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                }
+                else{
+                  if(P->ignoreHeaders == 0)
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
+	        }
               conName[r++] = sym;
               }
           break;
@@ -588,8 +594,11 @@ void CompressTargetWKM(Threads T){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                }
+                else{
+                  if(P->ignoreHeaders == 0)
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+	          }
+	        }
               conName[r++] = sym;
               }
           break; 
@@ -727,8 +736,11 @@ void CompressTarget(Threads T, char *dbFile){
             else{
               if(sym == ' ' || sym < 32 || sym > 126){ // PROTECT INTERVAL
                 if(r == 0) continue;
-                else       sym = '_'; // PROTECT OUT SYM WITH UNDERL
-                }
+                else{
+                  if(P->ignoreHeaders == 0)
+                    sym = '_'; // PROTECT OUT SYM WITH UNDERL
+                  }
+	        }
               conName[r++] = sym;
               }
           break; 
@@ -1510,7 +1522,7 @@ double width, double space){
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 int32_t P_Falcon(char **argv, int argc){
-  char     **p = *&argv, **xargv, *xpl = NULL;
+  char     **p = *&argv, **xargv = NULL, *xpl = NULL;
   int32_t  xargc = 0;
   uint32_t n, k, col, ref, topSize;
   double   gamma;
@@ -1545,7 +1557,10 @@ int32_t P_Falcon(char **argv, int argc){
   topSize     = ArgsNum    (DEF_TOP,         p, argc, "-t", MIN_TOP, MAX_TOP);
   P->nThreads = ArgsNum    (DEFAULT_THREADS, p, argc, "-n", MIN_THREADS,
   MAX_THREADS);
-  
+ 
+  // Ignore Header Changes Flag
+  P->ignoreHeaders    = ArgsState  (0,   p, argc, "-ih", "--ignore-hss");
+
   // Magnet Integration Flags
   P->useMagnet       = ArgsState  (0, p, argc, "-mg", "--magnet");
   P->magnetVerbose   = ArgsState  (DEFAULT_VERBOSE, p, argc, "-mv", "--magnet-verbose");
@@ -2344,7 +2359,7 @@ int32_t P_Filter_Visual(char **argv, int argc){
   }
 
 int32_t P_Inter(char **argv, int argc){
-  char        **p = *&argv, **xargv, *xpl = NULL;
+  char        **p = *&argv, **xargv = NULL, *xpl = NULL;
   int32_t     xargc = 0;
   uint32_t    n, k, col, ref;
   double      gamma;
@@ -2483,8 +2498,8 @@ int32_t P_Inter(char **argv, int argc){
   for(ref = 0 ; ref < P->nFiles ; ++ref)
     Free(T[ref].model);
   Free(T);
-  if(!OUTPUT) fclose(OUTPUT);
-  if(!LABELS) fclose(LABELS);
+  if(OUTPUT) fclose(OUTPUT); 
+  if(LABELS) fclose(LABELS); 
 
   return EXIT_SUCCESS;
   }

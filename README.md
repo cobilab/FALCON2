@@ -385,11 +385,16 @@ Options:
 - `-mi, --magnet-invert`: Invert filter
 - `-mp <val>`: Portion of acceptance (default: 1)
 
-## 7. Issues ##
+## 7. Citation ##
+
+L. L. Marques, A. J. Pinho, D. Pratas. FALCON2: compression-based metagenomic classification of ancient viruses. Bioinformatics, 2026.
+https://doi.org/10.1093/bioinformatics/btag155   
+
+## 8. Issues ##
 
 For any issue let us know at [issues link](https://github.com/cobilab/FALCON2/issues).
 
-## 8. License ##
+## 9. License ##
 
 GPL v3.
 
@@ -398,4 +403,4 @@ For more information see LICENSE file or visit
 
 ---
 
-**Copyright (C) 2014-2025, IEETA, University of Aveiro.**
+**Copyright (C) 2014-2026, IEETA, University of Aveiro.**

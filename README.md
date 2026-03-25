@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/static/v1?label=Technology&amp;message=Compression-based%20tool&amp;color=green&amp;style=flat-square" alt="Compression-based tool">
   <img src="https://img.shields.io/static/v1?label=Technology&amp;message=Alignment-free%20tool&amp;color=purple&amp;style=flat-square" alt="Alignment-free tool">
   <img src="https://img.shields.io/static/v1?label=Top-performance&amp;message=Ancient%20DNA%20viruses&amp;color=orange&amp;style=flat-square" alt="Top-performance">
-  <br>
+  <br><br>
 </div>
 
 <p align="center"><img src="imgs/logoTrans.png" alt="FALCON2" width="204" height="204" border="0" /></p>

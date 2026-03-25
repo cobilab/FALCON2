@@ -1,4 +1,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
+[![Compression-based tool](https://img.shields.io/badge/License-GPL%20v3-orange.svg)](Technology)
+[![Alignment-free tool](https://img.shields.io/badge/License-GPL%20v3-green.svg)](Technology)
+[![Top-performance](https://img.shields.io/badge/License-GPL%20v3-orange.svg)](ancient DNA)
 
 <p align="center"><img src="imgs/logoTrans.png"
 alt="FALCON2" width="204" height="204" border="0" /></p>

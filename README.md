@@ -1,7 +1,11 @@
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](LICENSE)
-[![Compression-based tool](https://img.shields.io/badge/License-GPL%20v3-orange.svg)](Technology)
-[![Alignment-free tool](https://img.shields.io/badge/License-GPL%20v3-green.svg)](Technology)
-[![Top-performance](https://img.shields.io/badge/License-GPL%20v3-orange.svg)](ancient DNA)
+
+<div align="center">
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square&logo=gnu&logoColor=white)](LICENSE)
+![Compression-based tool](https://img.shields.io/static/v1?label=Compression-based%20tool&message=Technology&color=green&style=flat-square)
+![Alignment-free tool](https://img.shields.io/static/v1?label=Alignment-free%20tool&message=Technology&color=green&style=flat-square)
+![Top-performance](https://img.shields.io/static/v1?label=Top-performance&message=Ancient%DNA%viruses&color=orange&style=flat-square)
+![Testing](https://img.shields.io/static/v1?label=Testing&message=Minimization%20false%20positives&color=orange&style=flat-square)
+</div>
 
 <p align="center"><img src="imgs/logoTrans.png"
 alt="FALCON2" width="204" height="204" border="0" /></p>

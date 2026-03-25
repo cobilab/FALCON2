@@ -36,8 +36,8 @@ git clone https://github.com/cobilab/FALCON2.git
 cd FALCON2/src/
 cmake .
 make
-cp FALCON2 ../../
-cd ../../
+cp FALCON2 ../
+cd ../
 ```
 [Cmake](http://www.cmake.org/) is needed for installation. 
 

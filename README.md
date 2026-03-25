@@ -10,14 +10,16 @@
 <p align="center"><img src="imgs/logoTrans.png" alt="FALCON2" width="204" height="204" border="0" /></p>
 
 <p align="justify">
-<b>FALCON2 is an ultra-fast method to infer metagenomic composition of sequenced reads</b>. FALCON2 measures <b>similarity between any FASTQ</b> file (or FASTA), independently from the size, <b>against any multi-FASTA database</b>, such as the entire set of complete genomes from the NCBI. FALCON2 supports single reads, paired-end reads, and compositions of both. It has been tested in many platforms, such as Illumina MySeq, HiSeq, Novaseq, IonTorrent.</p>
+<b>FALCON2 is a fast alignment-free framework for inferring metagenomic composition from sequencing reads.</b>
+It measures the <b>similarity between FASTQ or FASTA samples</b> and <b>large multi-FASTA reference databases</b>, ranging from curated collections to comprehensive repositories such as complete NCBI genome sets. FALCON2 supports single-end reads, paired-end reads, mixed datasets, and can also be applied to <b>long-read sequencing data</b>, making it a flexible solution across diverse sequencing technologies and experimental designs.
+</p>
 
 <p align="justify">
-FALCON2 is efficient to detect the presence and authenticate a given species in the FASTQ reads.
-The core of the method is based on <b>relative data compression</b>. FALCON2 uses <b>variable multi-threading</b>, without multiplying the memory for each thread, being able to <b>run efficiently in a common laptop</b>.</p>
+FALCON2 is based on <b>relative data compression</b>, providing a robust compression-based and alignment-free strategy for metagenomic screening, species detection, and sequence authentication. The method has been tested in <b>ancient metagenomics</b>, where it achieved <b>state-of-the-art results</b>, specifically in the analysis of ancient viral content. Its implementation uses <b>shared-memory multithreading</b>, avoiding memory replication across threads and enabling efficient execution even on standard laptop hardware.
+</p>
 
 <p align="justify">
-The tool is also able to <b>identify locally where, in each reference sequence, the similarity occurs</b>. FALCON2 provides subcommands to <b>filter the local results (filter)</b>, <b>visualize the results (fvisual)</b>, perform <b>database inter-similarity analysis (inter)</b>, and <b>visualize inter-similarities (ivisual)</b>.
+Beyond global similarity ranking, FALCON2 can also <b>identify where similarity occurs locally within each reference sequence</b>. To support downstream analysis, the toolkit provides dedicated subcommands to <b>filter local matches (<code>filter</code>)</b>, <b>visualize similarity profiles (<code>fvisual</code>)</b>, compute <b>inter-similarity across reference databases (<code>inter</code>)</b>, and <b>visualize inter-genome similarity maps (<code>ivisual</code>)</b>. Although originally developed for metagenomic screening, FALCON2 is <b>generalizable</b> and can be used in a broad range of comparative sequence analysis settings.
 </p>
 
 <br>

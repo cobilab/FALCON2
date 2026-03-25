@@ -1,10 +1,12 @@
 <!-- README.md -->
 <div align="center">
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square&logo=gnu&logoColor=white)](LICENSE)
-![Compression-based tool](https://img.shields.io/static/v1?label=Compression-based%20tool&message=Technology&color=green&style=flat-square)
-![Alignment-free tool](https://img.shields.io/static/v1?label=Alignment-free%20tool&message=Technology&color=green&style=flat-square)
-![Top-performance](https://img.shields.io/static/v1?label=Top-performance&message=Ancient%DNA%viruses&color=orange&style=flat-square)
-![Testing](https://img.shields.io/static/v1?label=Testing&message=Minimization%20false%20positives&color=orange&style=flat-square)
+  <a href="LICENSE">
+    <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square&amp;logo=gnu&amp;logoColor=white" alt="License: GPL v3">
+  </a>
+  <img src="https://img.shields.io/static/v1?label=Compression-based%20tool&amp;message=Technology&amp;color=green&amp;style=flat-square" alt="Compression-based tool">
+  <img src="https://img.shields.io/static/v1?label=Alignment-free%20tool&amp;message=Technology&amp;color=green&amp;style=flat-square" alt="Alignment-free tool">
+  <img src="https://img.shields.io/static/v1?label=Top-performance&amp;message=Ancient%20DNA%20viruses&amp;color=orange&amp;style=flat-square" alt="Top-performance">
+  <img src="https://img.shields.io/static/v1?label=Testing&amp;message=Minimization%20false%20positives&amp;color=orange&amp;style=flat-square" alt="Testing">
 </div>
 
 <p align="center"><img src="imgs/logoTrans.png"

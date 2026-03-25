@@ -1,8 +1,6 @@
 <!-- README.md -->
 <div align="center">
-  <a href="LICENSE">
-    <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square&amp;logo=gnu&amp;logoColor=white" alt="License: GPL v3">
-  </a>
+  <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square&amp;logo=gnu&amp;logoColor=white" alt="License: GPL v3">
   <img src="https://img.shields.io/static/v1?label=Compression-based%20tool&amp;message=Technology&amp;color=green&amp;style=flat-square" alt="Compression-based tool">
   <img src="https://img.shields.io/static/v1?label=Alignment-free%20tool&amp;message=Technology&amp;color=green&amp;style=flat-square" alt="Alignment-free tool">
   <img src="https://img.shields.io/static/v1?label=Top-performance&amp;message=Ancient%20DNA%20viruses&amp;color=orange&amp;style=flat-square" alt="Top-performance">

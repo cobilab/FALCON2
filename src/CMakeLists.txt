@@ -17,7 +17,5 @@ add_executable (FALCON2 falcon.c mem.c time.c msg.c parser.c common.c buffer.c s
         magnet_integration.c
         magnet.c
         reads.c)
-        
-target_compile_options(FALCON2 PRIVATE -O2 -march=x86-64)
 
 TARGET_LINK_LIBRARIES(FALCON2 pthread)

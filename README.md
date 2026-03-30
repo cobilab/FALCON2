@@ -142,7 +142,7 @@ wget http://sweet.ua.pt/pratas/datasets/VDB.fa.gz
 ---
 
 
-## Commands ##
+## Commands
 
 FALCON2 is a unified tool with multiple subcommands:
 

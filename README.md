@@ -21,7 +21,7 @@
 
 ---
 
-## ✨ What is FALCON2? ##
+## ✨ What is FALCON2?
 
 <p align="justify">
 <b>FALCON2 is a fast alignment-free framework for inferring metagenomic composition from sequencing reads.</b>

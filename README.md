@@ -138,11 +138,9 @@ wget http://sweet.ua.pt/pratas/datasets/VDB.fa.gz
 
 > No decompression needed — use `VDB.fa.gz` directly with FALCON2.
 
-
 ---
 
-
-## Commands
+## 🧰 Commands
 
 FALCON2 is a unified tool with multiple subcommands:
 

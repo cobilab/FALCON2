@@ -3,6 +3,7 @@
 <div align="center">
 
 <!-- Badges -->
+  ![Conda](https://img.shields.io/conda/dn/bioconda/falcon2?style=flat-square&logo=anaconda&logoColor=white)
   <img src="https://img.shields.io/badge/License-GPL%20v3-blue.svg?style=flat-square&amp;logo=gnu&amp;logoColor=white" alt="License: GPL v3">
   <img src="https://img.shields.io/static/v1?label=Technology&amp;message=Compression-based%20tool&amp;color=green&amp;style=flat-square" alt="Compression-based tool">
   <img src="https://img.shields.io/static/v1?label=Technology&amp;message=Alignment-free%20tool&amp;color=purple&amp;style=flat-square" alt="Alignment-free tool">
